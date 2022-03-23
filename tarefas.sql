@@ -5,7 +5,7 @@
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE=`ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION`;
 
 -- -----------------------------------------------------
 -- Schema tarefas
@@ -14,87 +14,82 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema tarefas
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `tarefas` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA `tarefas` DEFAULT CHARACTER SET utf8 ;
 USE `tarefas` ;
 
 -- -----------------------------------------------------
 -- Table `tarefas`.`autorizacoes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `tarefas`.`autorizacoes` (
+CREATE TABLE `tarefas`.`autorizacoes` (
   `idautorizacoes` INT NOT NULL,
   `nivelautorizacao` INT NOT NULL,
   `nomeautorizacao` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idautorizacoes`),
-  UNIQUE INDEX `nivelautorizacao_UNIQUE` (`nivelautorizacao` ASC)  ,
-  UNIQUE INDEX `nomeautorizacao_UNIQUE` (`nomeautorizacao` ASC) )
-ENGINE = InnoDB;
+  PRIMARY KEY (`idautorizacoes`))
+;
 
 
 -- -----------------------------------------------------
 -- Table `tarefas`.`usuarios`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `tarefas`.`usuarios` (
+CREATE TABLE `tarefas`.`usuarios` (
   `idusuarios` INT NOT NULL,
   `autorizacoes_idautorizacoes` INT NOT NULL,
   `nomeusuarios` VARCHAR(45) NULL,
   `emailusuario` VARCHAR(45) NULL,
   `datainclusao` DATETIME NULL,
-  PRIMARY KEY (`idusuarios`),
-  UNIQUE INDEX `emailusuario_UNIQUE` (`emailusuario` ASC)
-ENGINE = InnoDB;
+  PRIMARY KEY (`idusuarios`))
+;
 
 
 -- -----------------------------------------------------
 -- Table `tarefas`.`tarefas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `tarefas`.`tarefas` (
+CREATE TABLE `tarefas`.`tarefas` (
   `idtarefas` INT NOT NULL,
   `nometarefas` VARCHAR(45) NOT NULL,
   `grupotarefas` INT NULL,
   `tipotarefas` INT NULL,
   `usuariotarefa` INT NULL,
-  PRIMARY KEY (`idtarefas`),
-  UNIQUE INDEX `nometarefas_UNIQUE` (`nometarefas` ASC) )
-ENGINE = InnoDB;
+  PRIMARY KEY (`idtarefas`))
+;
 
 
 -- -----------------------------------------------------
 -- Table `tarefas`.`tipotarefas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `tarefas`.`tipotarefas` (
+CREATE TABLE `tarefas`.`tipotarefas` (
   `idtipotarefas` INT NOT NULL,
   `tipotarefas` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idtipotarefas`),
-  UNIQUE INDEX `tipotarefas_UNIQUE` (`tipotarefas` ASC) )
-ENGINE = InnoDB;
+  PRIMARY KEY (`idtipotarefas`))
+;
 
 
 -- -----------------------------------------------------
 -- Table `tarefas`.`grupotarefas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `tarefas`.`grupotarefas` (
+CREATE TABLE `tarefas`.`grupotarefas` (
   `idgrupotarefas` INT NOT NULL,
   `grupotarefas` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idgrupotarefas`),
   UNIQUE INDEX `grupotarefas_UNIQUE` (`grupotarefas` ASC) )
-ENGINE = InnoDB;
+;
 
 
 -- -----------------------------------------------------
 -- Table `tarefas`.`times`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `tarefas`.`times` (
+CREATE TABLE `tarefas`.`times` (
   `idtimes` INT NOT NULL,
   `nometime` VARCHAR(45) NULL,
   `participantetime` VARCHAR(45) NULL,
   PRIMARY KEY (`idtimes`))
-ENGINE = InnoDB;
+;
 
 
 -- -----------------------------------------------------
 -- Table `tarefas`.`listatarefas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `tarefas`.`listatarefas` (
+CREATE TABLE `tarefas`.`listatarefas` (
   `idlistatarefas` INT NOT NULL,
   `inclusaotarefa` DATE NOT NULL,
   `alteracaotarefa` DATETIME NULL,
@@ -138,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `tarefas`.`listatarefas` (
     REFERENCES `tarefas`.`tipotarefas` (`idtipotarefas`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
