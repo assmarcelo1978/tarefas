@@ -34,14 +34,13 @@ ENGINE = InnoDB;
 -- Table `tarefas`.`usuarios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tarefas`.`usuarios` (
-  `idusuarios` INT NOT NULL AUTO_INCREMENT,
+  `idusuarios` INT NOT NULL,
   `autorizacoes_idautorizacoes` INT NOT NULL,
   `nomeusuarios` VARCHAR(45) NULL,
   `emailusuario` VARCHAR(45) NULL,
   `datainclusao` DATETIME NULL,
   PRIMARY KEY (`idusuarios`),
-  UNIQUE INDEX `emailusuario_UNIQUE` (`emailusuario` ASC) ,
-  
+  UNIQUE INDEX `emailusuario_UNIQUE` (`emailusuario` ASC)
 ENGINE = InnoDB;
 
 
