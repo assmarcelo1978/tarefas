@@ -41,12 +41,7 @@ CREATE TABLE IF NOT EXISTS `tarefas`.`usuarios` (
   `datainclusao` DATETIME NULL,
   PRIMARY KEY (`idusuarios`),
   UNIQUE INDEX `emailusuario_UNIQUE` (`emailusuario` ASC) ,
-  INDEX `fk_usuarios_autorizacoes1_idx` (`autorizacoes_idautorizacoes` ASC) ,
-  CONSTRAINT `fk_usuarios_autorizacoes1`
-    FOREIGN KEY (`autorizacoes_idautorizacoes`)
-    REFERENCES `tarefas`.`autorizacoes` (`idautorizacoes`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  
 ENGINE = InnoDB;
 
 
