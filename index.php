@@ -1,37 +1,92 @@
-<?php
-         //definição de variáveis para conexão com DB
-         $dbhost = 'localhost';
-         $dbuser = 'root';
-         $dbpass = '';
-         $dbbanco = 'tarefas';
-         //$conn = mysqli('localhost','root','','tarefas');
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Tarefas</title>
+  <link rel="stylesheet" type="text/css" href="estilo.css" media="screen" />
 
-         //Executa conexão com DB
-         $mysqli = new mysqli("$dbhost","$dbuser","$dbpass","$dbbanco");
+</head>
+<body class="corpo">
 
-         // Checa conexão
-         if ($mysqli -> connect_errno) {
-           echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
-           exit();
-         }else{
-            echo 'Connectado com sucesso <br>';
-         }
-         
-// Define o limitador de cache para 'private'
-//session_cache_limiter('private');
-$cache_limiter = session_cache_limiter();
+teste de texto
 
-// Define o limite de tempo do cache em 30 minutos 
-session_cache_expire(30);
-$cache_expire = session_cache_expire();
+<p> teste de paragrafo </p>
 
-//session_destroy();
+<nav class="menu-sidebar">
 
-// Inicia a sessão
-session_start();
-echo "O limitador de cache esta definido agora como $cache_limiter<br />";
-echo "As sessões em cache irão expirar em $cache_expire minutos";
-$status = session_status();
-echo "<br> A Sessão está $status"
-//mysqli_close($mysqli);
-      ?>
+        <ul>
+            <li>
+                <a href="#">
+                    <i class="icon icon-home icon-text"></i>
+                    <span class="menu-texto">
+                        Página Inícial
+                    </span>
+                </a>
+              
+            </li>
+
+            <li class="has-subnav">
+                <a href="#">
+                    <i class="icon icon-file-text icon-text"></i>
+                    <span class="menu-texto">Posts</span>
+                </a>
+                
+            </li>
+            
+            <li class="has-subnav">
+                <a href="#">
+                   <i class="icon icon-camera icon-text"></i>
+                    <span class="menu-texto">Galeria de Fotos</span>
+                </a>
+                
+            </li>
+
+            <li class="has-subnav">
+                <a href="#">
+                   <i class="icon icon-play-circle icon-text"></i>
+                    <span class="menu-texto">Vídeos</span>
+                </a>
+               
+            </li>
+            
+            
+            <li>
+               <a href="#">
+                   <i class="icon icon-comments icon-text"></i>
+                    <span class="menu-texto">Comentários</span>
+                </a>
+            </li>
+
+            <li>
+               <a href="#">
+                    <i class="icon icon-gear icon-text"></i>
+                    <span class="menu-texto">Configurações</span>
+                </a>
+            </li>
+        
+            <li>
+                <a href="#">
+                   <i class="icon icon-envelope icon-text"></i>
+                    <span class="menu-texto"> Contato </span>
+                </a>
+            </li>
+        
+        </ul>
+
+        <ul class="logout">
+            
+            <li>
+               <a href="#">
+                    <i class="icon icon-plug icon-text"></i>
+                    <span class="menu-texto"> Sair</span>
+                </a>
+            </li>
+
+        </ul>
+
+</nav>
+
+</body>
+</html>
